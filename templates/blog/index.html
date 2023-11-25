@@ -1,0 +1,50 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+  
+
+  <main>
+    <!-- Placeholder for posts -->
+        {% for item in datas %}
+    <section class="posts">
+      
+      <!-- Single Post -->
+      
+      <article class="post">
+        
+        
+        <h2 class="post-title">Title: {{item.title}}</h2>
+        <p class="post-content">Content: {{item.content}}</p>
+        <p class="post-content">Posted By: {{item.author}}</p>
+        <p class="post-meta">Posted On: {{item.date}}</p>
+        
+        
+        <div class="post-actions">
+          <a href="#" class="post-action">Edit</a>
+          <a href="#" class="post-action">Delete</a>
+        </div>
+      
+
+        
+        
+        <div class="comment-section">
+          <!-- Comments will go here -->
+          <h3>Comments</h3>
+          <div class="comment">
+            <p class="comment-content">This is a comment on the post.</p>
+            <div class="comment-actions">
+              <a href="#" class="comment-action">Edit</a>
+              <a href="#" class="comment-action">Delete</a>
+            </div>
+          </div>
+          <!-- More comments can go here -->
+        </div>
+      </article>
+      <!-- More posts can go here -->
+    </section>
+    {% endfor %}
+   
+</main>
+
+{% endblock %}

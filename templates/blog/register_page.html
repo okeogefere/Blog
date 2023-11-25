@@ -1,0 +1,30 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+<body>
+  <div class="container">
+    <form class="form" method='POST'> {% csrf_token %}
+      <h2>Register</h2>
+      <div class="input-container">
+       <input type="text" id="username" name="username" required>
+        <label for="username">Username</label>
+      </div>
+      <div class="input-container">
+        <input type="email" id="email" name="email" required>
+        <label for="email">Email</label>
+      </div>
+      <div class="input-container">
+        <input type="password" id="password" name="password1" required>
+        <label for="password">Password</label>
+      </div>
+      <div class="input-container">
+        <input type="password" id="password" name="password2" required>
+        <label for="password">Confirm Password</label>
+      </div>
+      <button type="submit" class="btn">Register</button>
+      <p class="bottom-text">Already have an account? <a href="/login_page">Login</a></p>
+    </form>
+  </div>
+</body>
+{%endblock%}

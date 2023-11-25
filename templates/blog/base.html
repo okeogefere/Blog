@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professional Blog</title>
+  <link rel="stylesheet" href="{% static 'css/styles.css'%}">
+</head>
+<body>
+<header>
+    <nav>
+      <div class="logo">
+        <h1>Damien Blog</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="#">Contact</a></li>
+        {% if user.is_authenticated %}
+        <li><a href="#">{{request.user}}</a></li>
+      </ul>
+      {%endif%}
+      
+      <div class="user-auth">
+        {% if not request.user.is_authenticated %}
+        <a href="/login_page" class="auth-link">Login</a>
+        <a href="/register_page" class="auth-link">Register</a>
+      </div>
+      
+      <div class="user-auth">
+        {%else %}
+        <a href="/logout_page" class="auth-link">Logout</a>
+        <a href="/makepost" class="auth-link">make post</a>
+        {%endif%}
+      </div>
+      
+    </nav>
+  </header>
+  {%block content%}
+  {%endblock%}
+
+  <footer>
+    <p>&copy; 2023 Damien Blog. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>

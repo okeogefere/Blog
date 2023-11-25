@@ -1,0 +1,22 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+<body>
+  <div class="container">
+    <form class="form" method='POST'> {% csrf_token %}
+      <h2>Create Post</h2>
+      <div class="input-container">
+        <input type="text" id="postTitle" name="postTitle" required>
+        <label for="postTitle">Post Title</label>
+      </div>
+      <div class="input-container">
+        <textarea id="postContent" name="postContent" rows="6" required></textarea>
+        <label for="postContent">Post Content</label>
+      </div>
+      <button type="submit" class="btn">Post</button>
+    </form>
+  </div>
+</body>
+
+{%endblock%}
