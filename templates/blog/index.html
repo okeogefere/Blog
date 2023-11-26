@@ -22,7 +22,7 @@
         
         <div class="post-actions">
           <a href="#" class="post-action">Edit</a>
-          <a href="#" class="post-action">Delete</a>
+          <a href="{% url 'delete_post' item.pk %}" class="post-action">Delete</a>
         </div>
       
 
@@ -32,6 +32,8 @@
           <!-- Comments will go here -->
           <h3>Comments</h3>
           <div class="comment">
+            <input type="text" id="postTitle" name="postTitle" required>
+            <button type="submit" class="btn">Comment</button>
             <p class="comment-content">This is a comment on the post.</p>
             <div class="comment-actions">
               <a href="#" class="comment-action">Edit</a>

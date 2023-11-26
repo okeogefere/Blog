@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from .models import Posts
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
@@ -21,6 +22,7 @@ def register_user(request):
             password=password1
             )
         user.save()
+        
         return redirect('login_user')
     else:
         user = User()
@@ -52,8 +54,16 @@ def makepost(request):
             content = content
         )
         posted.save()
-        return redirect('home')
+        return redirect('home', pk=posted.pk)
 
     return render(request, 'blog/makepost.html')
 
 
+def delete_post(request, pk):
+    post = get_object_or_404(Posts, pk=pk)
+    
+    if request.user == post.author:
+        post.delete()
+        return redirect('home')
+    else:
+        return redirect('home')
